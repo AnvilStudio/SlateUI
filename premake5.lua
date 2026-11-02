@@ -1,0 +1,3 @@
+workspace "SlateUI"
+    language "cpp"
+    
