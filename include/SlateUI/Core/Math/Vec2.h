@@ -2,21 +2,18 @@
 
 namespace slate
 {
-    class Vec2
+    struct Vec2
     {
-    public:
         float x, y;
 
         constexpr Vec2(float _x, float _y)
+        : x(_x), y(_y)
         {
-            x = _x;
-            y = _y;
         }
 
         constexpr Vec2(float _initialize)
+        : x(_initialize), y(_initialize)
         {
-            x = _initialize;
-            y = _initialize;
         }
 
         constexpr Vec2 operator+(const Vec2 &other) const

@@ -2,34 +2,37 @@
 
 #include "SlateUI/slate.h"
 
-void test_overlap_rect()
+void tst_rect()
 {
 
-    // Overlapping rectangles
-    static_assert(
-        slate::Rect{{0.f, 0.f}, {100.f, 100.f}}
-            .Intersection(slate::Rect{{50.f, 50.f}, {100.f, 100.f}})
-            .size.x == 50.f);
+    constexpr slate::Rect a{{0.f, 0.f}, {100.f, 100.f}};
+    constexpr slate::Rect b{{50.f, 50.f}, {100.f, 100.f}};
+    constexpr slate::Rect c{{200.f, 200.f}, {50.f, 50.f}};
 
-    // Non-overlapping rectangles
-    static_assert(
-        slate::Rect{{0.f, 0.f}, {100.f, 100.f}}
-            .Intersection(slate::Rect{{200.f, 200.f}, {50.f, 50.f}})
-            .size.x == 0.f);
+    static_assert(slate::Contains(a, {25.f, 25.f}));
+    static_assert(!slate::Contains(a, {100.f, 25.f}));
 
-    // Rectangles touching at an edge
-    static_assert(
-        slate::Rect{{0.f, 0.f}, {100.f, 100.f}}
-            .Intersection(slate::Rect{{100.f, 0.f}, {50.f, 50.f}})
-            .size.x == 0.f);
+    static_assert(slate::Intersects(a, b));
+    static_assert(!slate::Intersects(a, c));
+
+    static_assert(slate::Intersection(a, b).size.x == 50.f);
+    static_assert(slate::Intersection(a, b).size.y == 50.f);
+
+    static_assert(slate::Intersection(a, c).size.x == 0.f);
 }
 
-constexpr bool TestAssignment()
+void test_layout()
 {
-    slate::Vec2 a{0.f, 0.f};
-    slate::Vec2 b{50.f, 70.f};
+    constexpr slate::Rect canvas{{0.f, 0.f}, {800.f, 600.f}};
 
-    a = b;
+    slate::Transform child = {
+        .anchor = slate::Anchor::TOP_CENTER,
+        .offset = {0.f},
+        .pivot = {0.5f, 0.5f},
+        .size = {200.f, 100.f}
+    };
 
-    return a.x == 50.f && a.y == 70.f;
+    slate::Rect NewRect = slate::ResolvePosition(canvas, child);
+
+    std::cout << NewRect.position.x << ", " << NewRect.position.y << "\n";
 }

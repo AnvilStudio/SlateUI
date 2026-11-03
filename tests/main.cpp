@@ -5,6 +5,6 @@
 
 int main(void)
 {
-    test_overlap_rect();
-    static_assert(TestAssignment());
+    tst_rect();
+    test_layout();
 }
