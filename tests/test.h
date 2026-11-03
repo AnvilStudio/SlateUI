@@ -28,8 +28,8 @@ void test_layout()
     slate::Transform child = {
         .anchor = slate::Anchor::TOP_CENTER,
         .offset = {0.f},
-        .pivot = {0.5f, 0.5f},
-        .size = {200.f, 100.f}
+        .size = {200.f, 100.f},
+        .pivot = {0.5f, 0.5f}
     };
 
     slate::Rect NewRect = slate::ResolvePosition(canvas, child);

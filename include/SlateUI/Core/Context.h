@@ -32,27 +32,27 @@ namespace slate
         ElementPool pool;
     };
 
-    ElementHandle CreateElement()
+    ElementHandle CreateElement(ElementPool& _pool)
     {
     }
 
-    bool DestroyElement()
+    bool DestroyElement(ElementHandle _handle, ElementPool& _pool)
     {
     }
 
-    void AddChild(ElementHandle _parent, ElementHandle _child)
+    void AddChild(ElementHandle _parent, ElementHandle _child, ElementPool& _pool)
     {
     }
 
-    void RemoveChild(ElementHandle _parent, ElementHandle _child)
+    void RemoveChild(ElementHandle _parent, ElementHandle _child, ElementPool& _pool)
     {
     }
 
-    void Reparent(ElementHandle _new_parent, ElementHandle _child)
+    void Reparent(ElementHandle _new_parent, ElementHandle _child, ElementPool& _pool)
     {
     }
 
-    bool IsValid()
+    bool IsValid(ElementHandle _handle, ElementPool _pool)
     {
     }
 }

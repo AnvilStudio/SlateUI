@@ -9,6 +9,9 @@
 
 namespace slate
 {
+    // Call before using slate
+    Context& SlateInit();
 
-
+    // Call before application shutdown
+    bool SlateTerminate();
 }
