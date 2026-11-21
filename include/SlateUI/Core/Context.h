@@ -5,12 +5,16 @@
 #include <cstddef>
 #include <cstdint>
 #include <vector>
+#include <string>
 
 namespace slate {
 struct ElementSlot {
     Transform transform{};
     Rect resolved{{0.f, 0.f}, {0.f, 0.f}};
     Relationship relationship{};
+    // Presentation data only; the hosting renderer owns glyph rasterization.
+    std::string text{};
+    float font_size = 18.f;
     uint32_t generation = 1;
     bool alive = false;
 };
