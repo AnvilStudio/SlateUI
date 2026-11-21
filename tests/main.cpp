@@ -6,5 +6,8 @@
 int main(void)
 {
     tst_rect();
+    tst_mem();
+    test_parenting();
+    test_tree();
     test_layout();
 }

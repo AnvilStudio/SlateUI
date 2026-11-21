@@ -6,12 +6,8 @@
 #include "Core/Context.h"
 #include "Core/ElementHandle.h"
 #include "Core/Relationship.h"
+#include "Util/debug.h"
 
 namespace slate
 {
-    // Call before using slate
-    Context& SlateInit();
-
-    // Call before application shutdown
-    bool SlateTerminate();
 }
